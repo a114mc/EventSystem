@@ -1,8 +1,8 @@
 package nep.timeline.EventSystem;
 
 import nep.timeline.EventSystem.type.EventPriority;
-import nep.timeline.projects.Sakura.Core;
-import nep.timeline.projects.Sakura.module.ModuleCore;
+//import nep.timeline.projects.Sakura.Core;
+//import nep.timeline.projects.Sakura.module.ModuleCore;
 
 import java.lang.invoke.MethodHandle;
 import java.lang.invoke.MethodHandles;
@@ -150,21 +150,9 @@ public class EventManager
         return event;
     }
 
-    private static String getParametersString(Class<?>... clazzes) {
-        StringBuilder sb = new StringBuilder("(");
-        boolean first = true;
-        for (Class<?> clazz : clazzes) {
-            if (first)
-                first = false;
-            else
-                sb.append(",");
-
-            if (clazz != null)
-                sb.append(clazz.getCanonicalName());
-            else
-                sb.append("null");
-        }
-        sb.append(")");
-        return sb.toString();
+    private static String getParametersString(Class<?>... classes) {
+        return Arrays.stream(classes)
+                .map(c -> c == null ? "null" : c.getCanonicalName())
+                .collect(Collectors.joining(",", "(", ")"));
     }
 }
