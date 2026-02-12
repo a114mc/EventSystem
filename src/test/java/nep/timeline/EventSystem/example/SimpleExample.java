@@ -1,13 +1,15 @@
+package nep.timeline.EventSystem.example;
+
 import nep.timeline.EventSystem.EventList;
 import nep.timeline.EventSystem.EventListener;
 import nep.timeline.EventSystem.EventManager;
-import nep.timeline.EventSystem.events.ShutdownEvent;
 
-public class Main {
+public class SimpleExample {
     public static void main(String[] args) {
-        Runtime.getRuntime().addShutdownHook(new Thread(() -> EventManager.call(new ShutdownEvent())));
+        EventManager.addListener(new SimpleExample());
+        Runtime.getRuntime().addShutdownHook(new Thread(() -> EventManager.call(new ExampleShutdownEvent())));
         System.out.println("Hello world!");
-        EventManager.addListener(new Main());
+        System.exit(0);
     }
 
     @EventListener(event = EventList.SHUT_DOWN)
@@ -17,7 +19,7 @@ public class Main {
     }
     
     @EventListener
-    public void shutdown(ShutdownEvent event)
+    public void shutdown(ExampleShutdownEvent event)
     {
         System.out.println("Shutdown..");
     }

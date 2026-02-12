@@ -1,11 +1,11 @@
-package nep.timeline.EventSystem.events;
+package nep.timeline.EventSystem.example;
 
 import nep.timeline.EventSystem.EventCore;
 import nep.timeline.EventSystem.EventList;
 
-public class ShutdownEvent extends EventCore
+public class ExampleShutdownEvent extends EventCore
 {
-    public ShutdownEvent()
+    public ExampleShutdownEvent()
     {
         super(EventList.SHUT_DOWN);
     }

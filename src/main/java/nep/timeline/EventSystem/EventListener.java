@@ -13,4 +13,6 @@ public @interface EventListener
 {
     EventList event() default EventList.NONE;
     EventPriority priority() default EventPriority.MEDIUM;
+    boolean async() default false;
+    boolean ignoreCancelled() default false;
 }
